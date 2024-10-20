@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>Электронная очередь (табло)</title>
+</head>
+
+<body>
+    <h1>Электронная очередь (табло) <small style="font-size:16px; color:#666;">{{now|date:"d.m.Y H:s"}}</small></h1>
+    <div style="display: flex;">
+        <div style="border-right: 2px solid navy;padding: 30px 15px;">
+            <h1>Сейчас играют:</h1>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                {% for player in players %}
+
+                <li
+                    style="border:1px solid #999; padding: 10px; margin:0 15px 15px 0;background: #0d6efd; color:#fff; border-radius: 5px; width:150px;">
+                    <b>{{ player.name }}</b> <br>играет с {{player.start_date|date:"H:s" }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div style="padding: 30px 15px;">
+            <h1>Ожидают:</h1>
+            <ul style="list-style: none;padding: 0; margin: 0;">
+                {% for geek in geeks %}
+                <li
+                    style="border:1px solid #999; padding: 10px; margin:0 15px 15px 0; background: #ffc107; border-radius:5px;width:150px;">
+                    <b>{{ geek.name }}</b> <br>в очереди с {{ geek.create_date|date:"H:s" }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
